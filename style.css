@@ -1,0 +1,69 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #87CEEB; /* Um céu azul como fundo */
+}
+
+.container {
+  display: grid;
+  grid-template-rows: auto auto; /* Duas linhas: uma para o jogo e uma para as setas */
+}
+
+#jogo {
+    position:relative;
+    width: 800px; /* Ajuste conforme necessário */
+    height: 600px; /* Ajuste conforme necessário */
+    border: 2px solid black;
+    overflow: hidden;
+    background-color: #f0f0f0; /* Cor de fundo do jogo */
+    background-image: url('https://raw.githubusercontent.com/patpires/jopi3m/main/pista.png');
+  
+      }
+
+#joaninha {
+    position: absolute;
+    width: 30px; /* Ajustado conforme especificado */
+    height: 30px; /* Ajustado conforme especificado */
+    /* Adicione mais estilos conforme necessário */
+}
+
+.obstacle {
+    position: absolute;
+    width: 50px; /* Ajuste conforme necessário */
+    height: 50px; /* Ajuste conforme necessário */
+    background-color: transparent; /* Garante que a div dos obstáculos seja transparente */
+    /* Adicione mais estilos conforme necessário */
+}
+
+.ponto {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: #093534;
+}
+
+#controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: absolute;
+  top: 95%; /* Isso posiciona a div das setas logo abaixo da div do jogo */
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.arrow-btn {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  width: 60px;
+  height: 60px;
+  touch-action: manipulation;
+  margin: 5px;
+}
+
+/* Adicione mais estilos conforme necessário */
