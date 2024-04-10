@@ -19,7 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
   let vidas = 1;
   let tempoTotal = 120; // Tempo total em segundos (3 minutos = 180 segundos)
   let tempoRestante = tempoTotal; // Inicializa o tempo restante com o tempo total
-
+  
+  var vida = document.getElementById("vida");
+  var colide = document.getElementById("colide");
+  
   const painelVidas = document.createElement('div');
   //painelVidas.textContent = `VIDAS: ${vidas}`;
   //painelVidas.textContent = `VIDAS: ${vidas}`;
@@ -187,6 +190,7 @@ function moveDown() {
           boomGif.style.height = '50px'; // Adjust size as needed
           boomGif.style.zIndex = '100'; // Ensure it's visible above other elements
         jogo.appendChild(boomGif);
+        colide.play();
         setTimeout(() => boomGif.remove(), 1000); // Remove after 1 second
         
           atualizarPainel();
@@ -213,6 +217,7 @@ function moveDown() {
         heartGif.style.height = '50px'; // Adjust size as needed
         heartGif.style.zIndex = '100'; // Ensure it's visible above other elements
         jogo.appendChild(heartGif);
+        vida.play();
         setTimeout(() => heartGif.remove(), 1000); // Remove after 1 second
 
         
