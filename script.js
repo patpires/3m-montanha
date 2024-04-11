@@ -264,7 +264,23 @@ const timer = setInterval(() => {
   }
 }, 1000); // Atualiza a cada 1000 milissegundos (1 segundo)
 
+function adjustGameElements() {
+    // Ajusta a posição da joaninha
+    const jogoWidth = jogo.offsetWidth;
+    const jogoHeight = jogo.offsetHeight;
+    joaninhaPos.x = Math.max(0, Math.min(jogoWidth - joaninha.offsetWidth, joaninhaPos.x));
+    joaninhaPos.y = Math.max(0, Math.min(jogoHeight - joaninha.offsetHeight, joaninhaPos.y));
+    updateJoaninhaPosition();
 
+    // Ajusta o tamanho e a posição dos obstáculos existentes
+    document.querySelectorAll('.obstacle').forEach(obstacle => {
+      obstacle.style.width = `${5 * (jogoWidth / 800)}vw`; // Exemplo de ajuste proporcional
+      obstacle.style.height = `auto`; // Mantém a proporção
+      // Ajuste a posição se necessário, similar ao ajuste da joaninha
+    });
+  }
+
+  window.addEventListener('resize', adjustGameElements);
   
   setInterval(gameLoop, 100);
   setInterval(createObstacle, 2000);
