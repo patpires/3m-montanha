@@ -24,6 +24,10 @@ body, html {
     background-image: url('https://raw.githubusercontent.com/patpires/jopi3m/main/pista.png');
     /*background-size: cover;  Garante que a imagem de fundo cubra todo o jogo */
     background-size: 100% 100%;
+    background-position: center;
+  background-repeat: no-repeat;
+
+  position: relative;
 }
 
 #joaninha {
