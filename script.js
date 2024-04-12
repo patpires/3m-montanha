@@ -102,44 +102,42 @@ document.addEventListener('touchstart', function(e) {
   
   // Função atualizada para posicionar dinamicamente a joaninha
   function updateJoaninhaPosition() {
-    // Calcula a posição inicial da joaninha com base nas dimensões atuais do contêiner
-    joaninhaPos.x = jogo.offsetWidth * 0.4375; // 350 de 800
-    joaninhaPos.y = jogo.offsetHeight * 0.2; // 120 de 600
+  // Garante que a joaninha não saia dos limites do contêiner do jogo
+  joaninhaPos.x = Math.max(0, Math.min(jogo.offsetWidth - joaninha.offsetWidth, joaninhaPos.x));
+  joaninhaPos.y = Math.max(0, Math.min(jogo.offsetHeight - joaninha.offsetHeight, joaninhaPos.y));
 
-    // Atualiza a posição da joaninha
-    joaninha.style.left = `${joaninhaPos.x}px`;
-    joaninha.style.top = `${joaninhaPos.y}px`;
-  }
+  // Atualiza a posição da joaninha
+  joaninha.style.left = `${joaninhaPos.x}px`;
+  joaninha.style.top = `${joaninhaPos.y}px`;
+}
 
-  const step = 10; // Isso define o quanto a joaninha se move
+ 
+// Ajuste nas funções de movimento
+const step = 10; // Passo fixo para o movimento
 
-// Funções de movimento atualizadas
+// Exemplo de chamada dentro de moveLeft
 function moveLeft() {
   if (!playing) return;
-  const proporcaoX = jogo.offsetWidth / 800;
-  joaninhaPos.x -= step * proporcaoX;
-  updateJoaninhaPosition();
+  joaninhaPos.x -= step;
+  updateJoaninhaPosition(); // Atualiza a posição com limites aplicados
 }
 
 function moveRight() {
   if (!playing) return;
-  const proporcaoX = jogo.offsetWidth / 800;
-  joaninhaPos.x += step * proporcaoX;
-  updateJoaninhaPosition();
+  joaninhaPos.x += step;
+  updateJoaninhaPosition(); // Atualiza a posição com limites aplicados
 }
 
 function moveUp() {
   if (!playing) return;
-  const proporcaoY = jogo.offsetHeight / 600;
-  joaninhaPos.y -= step * proporcaoY;
-  updateJoaninhaPosition();
+  joaninhaPos.y -= step;
+  updateJoaninhaPosition(); // Atualiza a posição com limites aplicados
 }
 
 function moveDown() {
   if (!playing) return;
-  const proporcaoY = jogo.offsetHeight / 600;
-  joaninhaPos.y += step * proporcaoY;
-  updateJoaninhaPosition();
+  joaninhaPos.y += step;
+  updateJoaninhaPosition(); // Atualiza a posição com limites aplicados
 }
 
 
