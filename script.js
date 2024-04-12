@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   const jogo = document.getElementById('jogo');
   const joaninha = document.getElementById('joaninha');
+  
+  // Código existente omitido para brevidade...
+  
   const obstacleGifs = [
     'https://raw.githubusercontent.com/patpires/jopi3m/main/obstaculo1.gif',
     'https://raw.githubusercontent.com/patpires/jopi3m/main/obstaculo2.gif',
@@ -49,22 +52,25 @@ document.addEventListener('touchstart', function(e) {
 }, { passive: false });
 
   // Supondo que 'jogo' seja um elemento já existente no seu HTML onde você deseja adicionar os pontos
+  // Criação dos pontos de vida atualizada para posicionar dinamicamente
   pontosDeVida.forEach(ponto => {
     const elementoPonto = document.createElement('div');
-    // Adiciona a classe .ponto ao elemento
     elementoPonto.classList.add('ponto');
-    // Define as posições x e y usando estilos CSS
-    elementoPonto.style.left = `${ponto.x}px`;
-    elementoPonto.style.top = `${ponto.y}px`;
+    // Define as posições x e y usando estilos CSS, calculados proporcionalmente
+    elementoPonto.style.left = `${ponto.x / 800 * jogo.offsetWidth}px`;
+    elementoPonto.style.top = `${ponto.y / 600 * jogo.offsetHeight}px`;
 
-    // Adiciona o elementoPonto como filho do elemento 'jogo'
     jogo.appendChild(elementoPonto);
   });
-  
-  function updateJoaninhaPosition() {
-    joaninhaPos.x = Math.max(0, Math.min(jogo.offsetWidth - joaninha.offsetWidth, joaninhaPos.x));
-    joaninhaPos.y = Math.max(0, Math.min(jogo.offsetHeight - joaninha.offsetHeight, joaninhaPos.y));
 
+  
+  // Função atualizada para posicionar dinamicamente a joaninha
+  function updateJoaninhaPosition() {
+    // Calcula a posição inicial da joaninha com base nas dimensões atuais do contêiner
+    joaninhaPos.x = jogo.offsetWidth * 0.4375; // 350 de 800
+    joaninhaPos.y = jogo.offsetHeight * 0.2; // 120 de 600
+
+    // Atualiza a posição da joaninha
     joaninha.style.left = `${joaninhaPos.x}px`;
     joaninha.style.top = `${joaninhaPos.y}px`;
   }
@@ -238,9 +244,23 @@ const timer = setInterval(() => {
   
   setInterval(gameLoop, 100);
   setInterval(createObstacle, 2000);
+ 
+  // Chamada inicial para posicionar a joaninha
   updateJoaninhaPosition();
 
-  winTimeout = setTimeout(victory, 180000);
+   winTimeout = setTimeout(victory, 180000);
+  
+  // Adiciona um ouvinte de evento para redimensionar
+  window.addEventListener('resize', () => {
+    updateJoaninhaPosition();
+    // Atualiza a posição dos pontos de vida
+    document.querySelectorAll('.ponto').forEach((elementoPonto, index) => {
+      const ponto = pontosDeVida[index];
+      elementoPonto.style.left = `${ponto.x / 800 * jogo.offsetWidth}px`;
+      elementoPonto.style.top = `${ponto.y / 600 * jogo.offsetHeight}px`;
+    });
+  });
+  
   
 });
 
