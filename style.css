@@ -1,78 +1,73 @@
-body, html { 
- height: 100%;
- margin: 0;
- display: flex;
- justify-content: center;
- align-items: center;
- background: #87CEEB;
- 
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #87CEEB;
 }
 
-.container { 
- display: grid;
- grid-template-rows: auto auto;
- 
- } 
- 
- .responsivo { 
+.container {
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+.responsivo {
   position: relative;
   background-color: #f0f0f0;
-  /* Cor de fundo do jogo */ 
   background-image: url('https://raw.githubusercontent.com/patpires/jopi3m/main/pista.png');
   background-size: cover;
-  /* Garante que a imagem de fundo cubra todo o jogo */ 
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
- } 
-
-#jogo { 
- position: relative;
- width: 80vw;
- height: 60vh;
- max-width: 800px;
- max-height: 600px;
- border: 2px solid black;
- overflow: hidden;
 }
 
-#joaninha { 
- position: absolute;
- width: 5vw;
- max-width: 30px;
- height: auto;
+#jogo {
+  position: relative;
+  width: 80vw;
+  height: 60vh;
+  max-width: 800px;
+  max-height: 600px;
+  border: 2px solid black;
+  overflow: hidden;
 }
 
-.obstacle, .ponto { 
- position: absolute;
- width: 5vw;
- max-width: 50px;
- height: auto;
- background-color: transparent;
+#joaninha {
+  position: absolute;
+  width: 5vw;
+  max-width: 30px;
+  height: auto;
 }
 
-#controls { 
- display: flex;
- justify-content: center;
- position: absolute;
- top: auto;
- bottom: 5%;
- left: 50%;
- transform: translateX(-50%);
- }
+.obstacle, .ponto {
+  position: absolute;
+  width: 5vw;
+  max-width: 50px;
+  height: auto;
+  background-color: transparent;
+}
 
-.arrow-btn { 
- background-color: red;
- color: white;
- font-weight: bold;
- width: 10vw;
- max-width: 60px;
- height: 10vw;
- max-height: 60px;
- touch-action: manipulation;
- margin: 5px;
- }
+#controls {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: auto;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
+.arrow-btn {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  width: 10vw;
+  max-width: 60px;
+  height: 10vw;
+  max-height: 60px;
+  touch-action: manipulation;
+  margin: 5px;
+}
 
 @media (max-width: 600px) {
   #jogo {
@@ -86,7 +81,6 @@ body, html {
     max-height: 50px;
   }
   #controls {
-    top: auto;
-     bottom: 10px; /* Ajuste para melhor posicionamento em telas pequenas */ 
+    bottom: 10px;
   }
 }
