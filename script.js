@@ -254,7 +254,7 @@ function moveDown() {
             joaninhaRect.left > pontoRect.right || 
             joaninhaRect.bottom < pontoRect.top || 
             joaninhaRect.top > pontoRect.bottom)) {
-        vidas += 1;
+        vidas += 0.5;
 
     const heartGif = document.createElement('img');
 
