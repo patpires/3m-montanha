@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+ocument.addEventListener('DOMContentLoaded', () => {
   const jogo = document.getElementById('jogo');
   const joaninha = document.getElementById('joaninha');
   
@@ -47,17 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // cópido gerado pelo ADAPTAGPT
   // Função para calcular e aplicar posições proporcionais
-function aplicarPosicoesProporcionais() {
-  const proporcaoX = jogo.offsetWidth / 800;
-  const proporcaoY = jogo.offsetHeight / 600;
+  function aplicarPosicoesProporcionais() {
+    const proporcaoX = jogo.offsetWidth / 800;
+    const proporcaoY = jogo.offsetHeight / 600;
 
-  // Atualiza joaninhaPos com as posições proporcionais
-  joaninhaPos.x = 350 * proporcaoX;
-  joaninhaPos.y = 120 * proporcaoY;
-
-  // Aplica a posição proporcional à joaninha
-  joaninha.style.left = `${joaninhaPos.x}px`;
-  joaninha.style.top = `${joaninhaPos.y}px`;
+    // Aplicar posição proporcional à joaninha
+    joaninha.style.left = `${350 * proporcaoX}px`;
+    joaninha.style.top = `${120 * proporcaoY}px`;
 
     // Aplicar posições proporcionais aos pontos de vida
     pontosDeVida.forEach((ponto, index) => {
@@ -113,32 +109,27 @@ document.addEventListener('touchstart', function(e) {
 
   const step = 10; // Isso define o quanto a joaninha se move
 
-// Funções de movimento atualizadas
 function moveLeft() {
   if (!playing) return;
-  const proporcaoX = jogo.offsetWidth / 800;
-  joaninhaPos.x -= step * proporcaoX;
+  joaninhaPos.x -= step;
   updateJoaninhaPosition();
 }
 
 function moveRight() {
   if (!playing) return;
-  const proporcaoX = jogo.offsetWidth / 800;
-  joaninhaPos.x += step * proporcaoX;
+  joaninhaPos.x += step;
   updateJoaninhaPosition();
 }
 
 function moveUp() {
   if (!playing) return;
-  const proporcaoY = jogo.offsetHeight / 600;
-  joaninhaPos.y -= step * proporcaoY;
+  joaninhaPos.y -= step;
   updateJoaninhaPosition();
 }
 
 function moveDown() {
   if (!playing) return;
-  const proporcaoY = jogo.offsetHeight / 600;
-  joaninhaPos.y += step * proporcaoY;
+  joaninhaPos.y += step;
   updateJoaninhaPosition();
 }
 
