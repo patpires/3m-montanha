@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  
   const jogo = document.getElementById('jogo');
   const joaninha = document.getElementById('joaninha');
   const obstacleGifs = [
@@ -40,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 let lastWidth = jogo.offsetWidth;
 let lastHeight = jogo.offsetHeight;
 
+  
 function checkSizeChange() {
     if (jogo.offsetWidth !== lastWidth || jogo.offsetHeight !== lastHeight) {
         adjustGameElements();
@@ -58,7 +60,11 @@ checkSizeChange(); // Inicia a verificação contínua
     { x: 288, y: 517 }, { x: 380, y: 568 }, { x: 500, y: 557 },
     { x: 549, y: 347 }
   ];
+calcularPosicaoInicial();
 
+
+
+  
   // Previne o comportamento padrão de toque em toda a tela, exceto em botões
 document.addEventListener('touchstart', function(e) {
   if (!e.target.matches('button')) {
@@ -79,13 +85,49 @@ document.addEventListener('touchstart', function(e) {
     jogo.appendChild(elementoPonto);
 });
   
-  function updateJoaninhaPosition() {
-    joaninhaPos.x = Math.max(0, Math.min(jogo.offsetWidth - joaninha.offsetWidth, joaninhaPos.x));
-    joaninhaPos.y = Math.max(0, Math.min(jogo.offsetHeight - joaninha.offsetHeight, joaninhaPos.y));
+// Dimensões originais do contêiner do jogo
+const originalWidth = 800;
+const originalHeight = 600;
 
-    joaninha.style.left = `${joaninhaPos.x}px`;
-    joaninha.style.top = `${joaninhaPos.y}px`;
-  }
+function calcularPosicaoInicial() {
+  const scaleX = jogo.offsetWidth / originalWidth;
+  const scaleY = jogo.offsetHeight / originalHeight;
+
+  // Calcula a nova posição inicial da joaninha
+  joaninhaPos.x = 350 * scaleX;
+  joaninhaPos.y = 120 * scaleY;
+
+  // Atualiza a posição da joaninha
+  updateJoaninhaPosition();
+
+  // Calcula e atualiza as posições dos pontos de vida
+  pontosDeVida.forEach((ponto, index) => {
+    pontosDeVida[index].x = ponto.x * scaleX;
+    pontosDeVida[index].y = ponto.y * scaleY;
+  });
+
+  // Aqui você precisará de uma função para atualizar os pontos de vida na tela,
+  // algo como updatePontosDeVida(), que você deve definir.
+  updatePontosDeVida();
+}
+
+function updateJoaninhaPosition() {
+  // Atualiza a posição da joaninha no DOM baseado em joaninhaPos
+  const joaninha = document.getElementById('joaninha');
+  joaninha.style.left = `${joaninhaPos.x}px`;
+  joaninha.style.top = `${joaninhaPos.y}px`;
+}
+
+function updatePontosDeVida() {
+  // Supondo que cada ponto de vida tenha um ID ou uma classe específica
+  pontosDeVida.forEach((ponto, index) => {
+    const pontoElemento = document.querySelector(`#pontoVida${index}`); // Certifique-se de que cada ponto de vida no seu HTML tenha um ID correspondente
+    if (pontoElemento) {
+      pontoElemento.style.left = `${ponto.x}px`;
+      pontoElemento.style.top = `${ponto.y}px`;
+    }
+  });
+}
 
   const step = 10; // Isso define o quanto a joaninha se move
 
@@ -324,6 +366,6 @@ function adjustGameElements() {
 });
 
 
-
+window.addEventListener('resize', calcularPosicaoInicial);
 
 
