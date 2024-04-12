@@ -37,6 +37,21 @@ document.addEventListener('DOMContentLoaded', () => {
   painelVidas.style.color = 'black';
   jogo.appendChild(painelVidas);
 
+let lastWidth = jogo.offsetWidth;
+let lastHeight = jogo.offsetHeight;
+
+function checkSizeChange() {
+    if (jogo.offsetWidth !== lastWidth || jogo.offsetHeight !== lastHeight) {
+        adjustGameElements();
+        lastWidth = jogo.offsetWidth;
+        lastHeight = jogo.offsetHeight;
+    }
+
+    requestAnimationFrame(checkSizeChange);
+}
+
+checkSizeChange(); // Inicia a verificação contínua
+  
   const pontosDeVida = [
     { x: 437, y: 196 }, { x: 393, y: 251 }, { x: 442, y: 307 },
     { x: 367, y: 368 }, { x: 410, y: 459 }, { x: 560, y: 448 },
