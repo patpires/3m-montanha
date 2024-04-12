@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let playing = true;
   let winTimeout;
   let vidas = 1;
-  let tempoTotal = 120; // Tempo total em segundos (3 minutos = 180 segundos)
+  let tempoTotal = 120; // Tempo total em segundos (2 minutos = 120 segundos)
   let tempoRestante = tempoTotal; // Inicializa o tempo restante com o tempo total
 
   const painelVidas = document.createElement('div');
@@ -224,7 +224,7 @@ function moveDown() {
         vidas -= 1;
    const boomGif = document.createElement('img');
 
-      boomGif.src = 'https://raw.githubusercontent.com/patpires/-montanha/main/boom1.gif';
+      boomGif.src = 'https://raw.githubusercontent.com/patpires/3m-montanha/main/boom1.gif';
 
       boomGif.style.position = 'absolute';
 
@@ -262,7 +262,7 @@ function moveDown() {
 
   const heartGif = document.createElement('img');
 
-    heartGif.src = 'https://raw.githubusercontent.com/patpires/-montanha/main/core.gif';
+    heartGif.src = 'https://raw.githubusercontent.com/patpires/3m-montanha/main/core.gif';
 
     heartGif.style.position = 'absolute';
 
