@@ -113,7 +113,7 @@ document.addEventListener('touchstart', function(e) {
 
  
 // Ajuste nas funções de movimento
-const step = 10; // Passo fixo para o movimento
+const step = 20; // Passo fixo para o movimento
 
 // Funções de movimento simplificadas
 function moveLeft() {
@@ -122,7 +122,7 @@ function moveLeft() {
 }
 
 function moveRight() {
-  joaninhaPos.x = step;
+  joaninhaPos.x += step;
   updateJoaninhaPosition();
 }
 
@@ -132,9 +132,10 @@ function moveUp() {
 }
 
 function moveDown() {
-  joaninhaPos.y = step;
+  joaninhaPos.y += step;
   updateJoaninhaPosition();
 }
+
 
 
   document.addEventListener('keydown', (e) => {
@@ -203,7 +204,7 @@ function moveDown() {
 
   function victory() {
     playing = false;
-    createRestartButton('Você venceu! Conseguiu ficar por 3 minutos! Clique para jogar novamente');
+    createRestartButton('Você venceu! Conseguiu ficar por 2 minutos! Clique para jogar novamente');
   }
 
  
@@ -254,7 +255,7 @@ function moveDown() {
             joaninhaRect.left > pontoRect.right || 
             joaninhaRect.bottom < pontoRect.top || 
             joaninhaRect.top > pontoRect.bottom)) {
-        vidas += 0.1;
+        vidas += 1;
 
     const heartGif = document.createElement('img');
 
@@ -278,7 +279,7 @@ function moveDown() {
 
     setTimeout(() => heartGif.remove(), 1000);
  // Remove after 1 second
-        
+      
           atualizarPainel();
         ponto.remove();
       }
@@ -343,6 +344,17 @@ const timer = setInterval(() => {
     });
   });
   
+function setInitialPosition() {
+  const proporcaoX = jogo.offsetWidth / 800; // Supondo 800 como largura base
+  const proporcaoY = jogo.offsetHeight / 600; // Supondo 600 como altura base
+
+  joaninhaPos.x = 350 * proporcaoX; // Ajuste 350 conforme necessário
+  joaninhaPos.y = 120 * proporcaoY; // Ajuste 120 conforme necessário
+
+  updateJoaninhaPosition();
+}
+window.addEventListener('load', setInitialPosition);
+
   
 });
 
