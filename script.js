@@ -44,6 +44,38 @@ document.addEventListener('DOMContentLoaded', () => {
     { x: 549, y: 347 }
   ];
 
+  
+  // cópido gerado pelo ADAPTAGPT
+  // Função para calcular e aplicar posições proporcionais
+  function aplicarPosicoesProporcionais() {
+    const proporcaoX = jogo.offsetWidth / 800;
+    const proporcaoY = jogo.offsetHeight / 600;
+
+    // Aplicar posição proporcional à joaninha
+    joaninha.style.left = `${350 * proporcaoX}px`;
+    joaninha.style.top = `${120 * proporcaoY}px`;
+
+    // Aplicar posições proporcionais aos pontos de vida
+    pontosDeVida.forEach((ponto, index) => {
+      const elementoPonto = jogo.querySelector(`.ponto[data-index="${index}"]`) || document.createElement('div');
+      elementoPonto.classList.add('ponto');
+      elementoPonto.setAttribute('data-index', index); // Atributo para identificar unicamente cada ponto
+      elementoPonto.style.left = `${ponto.x * proporcaoX}px`;
+      elementoPonto.style.top = `${ponto.y * proporcaoY}px`;
+
+      if (!elementoPonto.parentNode) {
+        jogo.appendChild(elementoPonto);
+      }
+    });
+  }
+
+  // Inicializar posições ao carregar
+  aplicarPosicoesProporcionais();
+// final do código gerado pelo adatpa gpt
+
+
+
+
   // Previne o comportamento padrão de toque em toda a tela, exceto em botões
 document.addEventListener('touchstart', function(e) {
   if (!e.target.matches('button')) {
