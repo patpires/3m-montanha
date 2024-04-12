@@ -207,7 +207,7 @@ function moveDown() {
 
   function victory() {
     playing = false;
-    createRestartButton('Você venceu! Conseguiu ficar por 3 minutos! Clique para jogar novamente');
+    createRestartButton('Você venceu! Conseguiu ficar por 2 minutos! Clique para jogar novamente');
   }
 
  
@@ -224,7 +224,7 @@ function moveDown() {
         vidas -= 1;
    const boomGif = document.createElement('img');
 
-      boomGif.src = 'https://raw.githubusercontent.com/patpires/3m-montanha/main/boom1.gif';
+      boomGif.src = 'https://raw.githubusercontent.com/patpires/-montanha/main/boom1.gif';
 
       boomGif.style.position = 'absolute';
 
@@ -262,7 +262,7 @@ function moveDown() {
 
   const heartGif = document.createElement('img');
 
-    heartGif.src = 'https://raw.githubusercontent.com/patpires/3m-montanha/main/core.gif';
+    heartGif.src = 'https://raw.githubusercontent.com/patpires/-montanha/main/core.gif';
 
     heartGif.style.position = 'absolute';
 
