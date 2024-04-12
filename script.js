@@ -122,7 +122,7 @@ function moveLeft() {
 }
 
 function moveRight() {
-  joaninhaPos.x += step;
+  joaninhaPos.x = step;
   updateJoaninhaPosition();
 }
 
@@ -132,7 +132,7 @@ function moveUp() {
 }
 
 function moveDown() {
-  joaninhaPos.y += step;
+  joaninhaPos.y = step;
   updateJoaninhaPosition();
 }
 
@@ -167,8 +167,8 @@ function moveDown() {
       if (!playing) return;
       const currentLeft = parseInt(obstacle.style.left, 10);
       const currentTop = parseInt(obstacle.style.top, 10);
-      obstacle.style.left = `${currentLeft + Math.cos(angle) * speed}px`;
-      obstacle.style.top = `${currentTop + Math.sin(angle) * speed}px`;
+      obstacle.style.left = `${currentLeft  Math.cos(angle) * speed}px`;
+      obstacle.style.top = `${currentTop  Math.sin(angle) * speed}px`;
 
       if (currentLeft < -30 || currentLeft > jogo.offsetWidth || currentTop < -30 || currentTop > jogo.offsetHeight) {
         obstacle.remove();
@@ -254,7 +254,7 @@ function moveDown() {
             joaninhaRect.left > pontoRect.right || 
             joaninhaRect.bottom < pontoRect.top || 
             joaninhaRect.top > pontoRect.bottom)) {
-        vidas += 0,5;
+        vidas += 1;
 
     const heartGif = document.createElement('img');
 
