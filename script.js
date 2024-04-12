@@ -1,4 +1,4 @@
-ocument.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const jogo = document.getElementById('jogo');
   const joaninha = document.getElementById('joaninha');
   
