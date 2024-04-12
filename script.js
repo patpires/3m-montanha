@@ -20,13 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let playing = true;
   let winTimeout;
   let vidas = 1;
-  let tempoTotal = 180; // Tempo total em segundos (3 minutos = 180 segundos)
+  let tempoTotal = 120; // Tempo total em segundos (2 minutos = 120 segundos)
   let tempoRestante = tempoTotal; // Inicializa o tempo restante com o tempo total
 
   const painelVidas = document.createElement('div');
   //painelVidas.textContent = `VIDAS: ${vidas}`;
   //painelVidas.textContent = `VIDAS: ${vidas}`;
-  painelVidas.innerHTML =  `VIDAS: ${vidas}`+ "<br> Tente Sobreviver na Montanha por 3min<br>Livre-se dos Obstáculos e ganhe Vidas";
+  painelVidas.innerHTML =  `VIDAS: ${vidas}`+ "<br> Tente Sobreviver na Montanha por 2min<br>Livre-se dos Obstáculos e ganhe Vidas";
   painelVidas.style.position = 'absolute';
   painelVidas.style.right = '20px';
   painelVidas.style.top = '20px';
@@ -254,7 +254,7 @@ function moveDown() {
             joaninhaRect.left > pontoRect.right || 
             joaninhaRect.bottom < pontoRect.top || 
             joaninhaRect.top > pontoRect.bottom)) {
-        vidas += 0.5;
+        vidas += 0.1;
 
     const heartGif = document.createElement('img');
 
@@ -330,7 +330,7 @@ const timer = setInterval(() => {
   // Chamada inicial para posicionar a joaninha
   updateJoaninhaPosition();
 
-   winTimeout = setTimeout(victory, 180000);
+   winTimeout = setTimeout(victory, 120000);
   
   // Adiciona um ouvinte de evento para redimensionar
   window.addEventListener('resize', () => {
