@@ -115,29 +115,25 @@ document.addEventListener('touchstart', function(e) {
 // Ajuste nas funções de movimento
 const step = 10; // Passo fixo para o movimento
 
-// Exemplo de chamada dentro de moveLeft
+// Funções de movimento simplificadas
 function moveLeft() {
-  if (!playing) return;
   joaninhaPos.x -= step;
-  updateJoaninhaPosition(); // Atualiza a posição com limites aplicados
+  updateJoaninhaPosition();
 }
 
 function moveRight() {
-  if (!playing) return;
   joaninhaPos.x += step;
-  updateJoaninhaPosition(); // Atualiza a posição com limites aplicados
+  updateJoaninhaPosition();
 }
 
 function moveUp() {
-  if (!playing) return;
   joaninhaPos.y -= step;
-  updateJoaninhaPosition(); // Atualiza a posição com limites aplicados
+  updateJoaninhaPosition();
 }
 
 function moveDown() {
-  if (!playing) return;
   joaninhaPos.y += step;
-  updateJoaninhaPosition(); // Atualiza a posição com limites aplicados
+  updateJoaninhaPosition();
 }
 
 
