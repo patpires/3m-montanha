@@ -51,18 +51,18 @@ document.addEventListener('touchstart', function(e) {
   }
 }, { passive: false });
 
-  // Supondo que 'jogo' seja um elemento já existente no seu HTML onde você deseja adicionar os pontos
-  pontosDeVida.forEach(ponto => {
+ pontosDeVida.forEach(ponto => {
     const elementoPonto = document.createElement('div');
-    // Adiciona a classe .ponto ao elemento
     elementoPonto.classList.add('ponto');
-    // Define as posições x e y usando estilos CSS
+    // Armazena as posições originais como atributos de data
+    elementoPonto.setAttribute('data-x', ponto.x);
+    elementoPonto.setAttribute('data-y', ponto.y);
+    // Ajusta as posições iniciais (isso será recalculado no ajuste)
     elementoPonto.style.left = `${ponto.x}px`;
     elementoPonto.style.top = `${ponto.y}px`;
 
-    // Adiciona o elementoPonto como filho do elemento 'jogo'
     jogo.appendChild(elementoPonto);
-  });
+});
   
   function updateJoaninhaPosition() {
     joaninhaPos.x = Math.max(0, Math.min(jogo.offsetWidth - joaninha.offsetWidth, joaninhaPos.x));
@@ -278,6 +278,24 @@ function adjustGameElements() {
       obstacle.style.height = `auto`; // Mantém a proporção
       // Ajuste a posição se necessário, similar ao ajuste da joaninha
     });
+
+// Calcula o fator de escala baseado nas dimensões atuais da div do jogo
+    const scaleX = jogo.offsetWidth / 800;
+    const scaleY = jogo.offsetHeight / 600;
+
+    // Ajusta o tamanho e a posição dos pontos de vida
+    document.querySelectorAll('.ponto').forEach(ponto => {
+        // Supondo que cada ponto tenha atributos de data para suas posições originais (x, y)
+        const originalX = parseInt(ponto.getAttribute('data-x'), 10);
+        const originalY = parseInt(ponto.getAttribute('data-y'), 10);
+
+        // Ajusta as posições com base no fator de escala
+        ponto.style.left = `${originalX * scaleX}px`;
+        ponto.style.top = `${originalY * scaleY}px`;
+    });
+
+
+  
   }
 
   window.addEventListener('resize', adjustGameElements);
