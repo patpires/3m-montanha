@@ -11,7 +11,15 @@ body, html {
     display: grid;
     grid-template-rows: auto auto; /* Duas linhas: uma para o jogo e uma para as setas */
 }
-
+.responsivo {
+    position: relative;
+    background-color: #f0f0f0; /* Cor de fundo do jogo */
+    background-image: url('https://raw.githubusercontent.com/patpires/jopi3m/main/pista.png');
+    /* background-size: cover; /* Garante que a imagem de fundo cubra todo o jogo */
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 #jogo {
     position: relative;
     width: 80vw; /* Ajuste conforme necessário, com máximo de 800px */
@@ -20,12 +28,7 @@ body, html {
     max-height: 600px;
     border: 2px solid black;
     overflow: hidden;
-    background-color: #f0f0f0; /* Cor de fundo do jogo */
-    background-image: url('https://raw.githubusercontent.com/patpires/jopi3m/main/pista.png');
-    /* background-size: cover; /* Garante que a imagem de fundo cubra todo o jogo */
-    background-size: 100% 100%;
-    background-position: center;
-    background-repeat: no-repeat;
+    
 
 }
 
