@@ -218,6 +218,29 @@ function moveDown() {
             joaninhaRect.bottom < obstacleRect.top || 
             joaninhaRect.top > obstacleRect.bottom)) {
         vidas -= 1;
+      const boomGif = document.createElement('img');
+
+      boomGif.src = 'https://raw.githubusercontent.com/patpires/3m-montanha/main/boom1.gif';
+
+      boomGif.style.position = 'absolute';
+
+      boomGif.style.left = `${joaninhaPos.x}px`;
+
+      boomGif.style.top = `${joaninhaPos.y}px`;
+
+      boomGif.style.width = '50px';
+ // Adjust size as needed
+      boomGif.style.height = '50px';
+ // Adjust size as needed
+      boomGif.style.zIndex = '100';
+ // Ensure it's visible above other elements
+    jogo.appendChild(boomGif);
+
+    colide.play();
+
+    setTimeout(() => boomGif.remove(), 1000);
+ // Remove after 1 second
+        
           atualizarPainel();
         obstacle.remove();
         if (vidas <= 0) gameOver();
@@ -232,6 +255,30 @@ function moveDown() {
             joaninhaRect.bottom < pontoRect.top || 
             joaninhaRect.top > pontoRect.bottom)) {
         vidas += 1;
+
+    const heartGif = document.createElement('img');
+
+    heartGif.src = 'https://raw.githubusercontent.com/patpires/3m-montanha/main/core.gif';
+
+    heartGif.style.position = 'absolute';
+
+    heartGif.style.left = `${joaninhaPos.x}px`;
+
+    heartGif.style.top = `${joaninhaPos.y}px`;
+
+    heartGif.style.width = '50px';
+ // Adjust size as needed
+    heartGif.style.height = '50px';
+ // Adjust size as needed
+    heartGif.style.zIndex = '100';
+ // Ensure it's visible above other elements
+    jogo.appendChild(heartGif);
+
+    vida.play();
+
+    setTimeout(() => heartGif.remove(), 1000);
+ // Remove after 1 second
+        
           atualizarPainel();
         ponto.remove();
       }
