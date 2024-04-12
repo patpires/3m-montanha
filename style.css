@@ -22,8 +22,8 @@ body, html {
     overflow: hidden;
     background-color: #f0f0f0; /* Cor de fundo do jogo */
     background-image: url('https://raw.githubusercontent.com/patpires/jopi3m/main/pista.png');
-    background-size: cover; /* Garante que a imagem de fundo cubra todo o jogo */
-    /* background-size: 100% 100%; */
+    /* background-size: cover; /* Garante que a imagem de fundo cubra todo o jogo */
+    background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
 
