@@ -353,7 +353,7 @@ function setInitialPosition() {
 
   updateJoaninhaPosition();
 }
-window.addEventListener('load', setInitialPosition);
+window.addEventListener('load', setInitialPosition());
 
   
 });
